@@ -7,6 +7,7 @@
 - Multiple selected images
 - Show Preview image after uploaded
 - Show alert message after uploaded
+- Please clone RestAPI from : https://github.com/iwane021/api-upload-php
 
 ## What is CodeIgniter?
 

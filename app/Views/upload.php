@@ -54,17 +54,16 @@
                     </div>
                 </form>
 
-                <?php
-                    if(session()->getFlashdata('previewImage')):?>
-                        <div class="form-group py-4">
-                        <h5 class="py-2">Image Preview</h5>
-                            <?php foreach(session()->getFlashdata('previewImage') as $image): ?>
-                                <img src="<?php echo base_url('uploads/'.$image);?>" class="img-fluid" height="150px"/>
-                                <br/>
-                                <br/>
-                            <?php endforeach; ?>
-                        </div>
-                    <?php endif; ?>
+                <?php if(session()->getFlashdata('previewImage')):?>
+                    <div class="form-group py-4">
+                    <h5 class="py-2">Image Preview</h5>
+                        <?php foreach(session()->getFlashdata('previewImage') as $image): ?>
+                            <img src="<?php echo base_url('uploads/'.$image);?>" class="img-fluid" height="150px"/>
+                            <br/>
+                            <br/>
+                        <?php endforeach; ?>
+                    </div>
+                <?php endif; ?>
                 </div>
             </div>
         </div>

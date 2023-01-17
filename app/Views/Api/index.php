@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
     <head>
-        <title>Codeigniter 4 Form Validation Multiple Image</title>
+        <title>Codeigniter 4 Form Validation Single Image API</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -47,6 +47,15 @@
                         </div>
                     </div>
                 </form>
+
+                <?php if(session()->getFlashdata('result')):?>
+                    <div class="form-group py-4">
+                    <h5 class="py-2">Result : </h5>
+                        <pre>
+                            <?php print_r(session()->getFlashdata('result')) ?>
+                        </pre>
+                    </div>
+                <?php endif; ?>
             </div>
         </div>
     </div>

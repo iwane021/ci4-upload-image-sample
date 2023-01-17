@@ -6,6 +6,11 @@ use App\Controllers\BaseController;
 
 class PagesController extends BaseController
 {
+    public function _construct()
+    {
+        helper(['form','url']);
+    }
+
     public function index()
     {
         return view('Api/index');
@@ -14,10 +19,9 @@ class PagesController extends BaseController
     public function submitForm()
     {
         $request = service('request');
+        // $validation = \Config\Services::validation();
         
-        $validation = \Config\Services::validation();
-        
-        $input = $validation->setRules([
+        $validated = $this->validate([
             'username' => 'required',
             'image' => [
                 'uploaded[image]',
@@ -29,9 +33,10 @@ class PagesController extends BaseController
             ]
         ]);
 
-        if($validation->withRequest($this->request)->run())
+        // if($validation->withRequest($this->request)->run())
+        if($validated)
         {
-            $apiURL = 'http://localhost:8080/api-upload/api.php';
+            $apiURL = 'http://localhost:8080/api-upload-php/api.php';
             $client = \Config\Services::curlrequest();
             
             if($file = $this->request->getFile('image')) {
@@ -59,26 +64,27 @@ class PagesController extends BaseController
                 {
                     // Read data 
                     $body = json_decode($response->getBody());
-
-                    echo "<pre>";
-                    print_r($body);
-                    echo "</pre>";
-                    die;
-
+                    
+                    // echo "<pre>";
+                    // print_r($body);
+                    // echo "</pre>";
+                    // die;
+                    
+                    return redirect()->to(site_url('/page'))->withInput()->with('result', $body);
                 }
                 else
                 {
-                    echo "failed";
-                    die;
+                    // echo "failed";
+                    // die;
+
+                    return redirect()->to(site_url('/page'))->withInput()->with('result', 'FAILED!');
                 }
             }
         }
         else 
         {
-            $data['validation'] = $this->validator;
-            return redirect()->back()->withInput()->with('validation', $this->validator);
+            return view('Api/index', [ 'validation' => $this->validator ]);
         }
 
-        return redirect()->route('page');
     }
 }

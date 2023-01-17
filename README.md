@@ -3,10 +3,10 @@
 ## Features
 
 - Using Bootstrap 5
-- Include with Validation Error Message
-- Multiple images uploaded
-- Preview image after uploaded
-- Show alert success message after uploaded
+- Including Validation Error Message
+- Multiple selected images
+- Show Preview image after uploaded
+- Show alert message after uploaded
 
 ## What is CodeIgniter?
 

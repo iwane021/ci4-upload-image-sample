@@ -110,11 +110,11 @@
 
 # security.csrfProtection = 'cookie'
 # security.tokenRandomize = false
-# security.tokenName = 'csrf_token_name'
-# security.headerName = 'X-CSRF-TOKEN'
-# security.cookieName = 'csrf_cookie_name'
-# security.expires = 7200
-# security.regenerate = true
+security.tokenName = 'csrf_hash_name'
+security.headerName = 'X-CSRF-TOKEN'
+security.cookieName = 'csrf_cookie_name'
+security.expires = 7200
+security.regenerate = true
 # security.redirect = false
 # security.samesite = 'Lax'
 

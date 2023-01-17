@@ -34,6 +34,9 @@ $routes->get('/', 'Home::index');
 $routes->get('upload-image', 'ImageController::index');
 $routes->post('upload-image', 'ImageController::uploadImage');
 
+$routes->get('page', 'Api\PagesController::index');
+$routes->post('page/submitform', 'Api\PagesController::submitForm');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing

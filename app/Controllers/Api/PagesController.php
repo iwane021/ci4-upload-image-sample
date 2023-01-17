@@ -31,7 +31,7 @@ class PagesController extends BaseController
 
         if($validation->withRequest($this->request)->run())
         {
-            $apiURL = 'http://localhost:8080/ci4-upload-image-sample/api.php';
+            $apiURL = 'http://localhost:8080/api-upload/api.php';
             $client = \Config\Services::curlrequest();
             
             if($file = $this->request->getFile('image')) {
@@ -46,20 +46,10 @@ class PagesController extends BaseController
                 );
 
                 // Send request
-                // $response = $client->request('POST', $apiURL,[
-                //     'debug' => true, 
-                //     'multipart' => $postData
-                // ]);
-
-                $response = $client->post($apiURL, [
-                    'debug' => true,
-                    // 'form_params' => $postData
+                $response = $client->request('POST', $apiURL,[
+                    'debug' => true, 
                     'multipart' => $postData
                 ]);
-                
-                echo '<pre>';
-                var_dump($response);die;
-                echo '</pre>';
                 
                 // Read response
                 $code   = $response->getStatusCode(); // 200
